@@ -1,0 +1,32 @@
+{% if call.id is None %}
+<h1>Creation d'une nouvelle escale</h1>
+{% else %}
+<h1>Edition de l'escale {{call.num}}</h1>
+{% endif %}
+
+{% if error_messages %}
+    <p><strong>
+    {% for mess in error_messages %}
+        {{ mess }}<br/>
+    {% endfor %}
+    </strong></p>
+{% endif %}
+
+{% if call.id is None %}
+<form action="{% url 'callsmanager:call_create' %}" method="post">
+{% else %}
+<form action="{% url 'callsmanager:call_update' call.id %}" method="post">
+{% endif %}
+
+    {% csrf_token %}
+    <label>Locode du port</label>
+    <input type="text" name="locode" id="port_locode" maxlength="5" minlength="5"><br/>
+    <label>OMI du navire</label>
+    <input type="text" name="imo" id="ship_imo" maxlength="7" minlength="7"><br/>
+    <label>ETA</label>
+    <input type="date" name="eta" id="eta"><br/>
+    <label>ETD</label>
+    <input type="date" name="etd" id="etd"><br/>
+
+    <input type="submit" value="Valider">
+</form>

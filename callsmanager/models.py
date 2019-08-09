@@ -17,8 +17,8 @@ class Call(models.Model):
     num = models.CharField(max_length=15)
     port = models.ForeignKey(Port, on_delete=models.CASCADE)
     ship = models.ForeignKey(Ship, on_delete=models.CASCADE)
-    eta = models.DateTimeField()
-    etd = models.DateTimeField()
+    eta = models.DateTimeField(null=True, blank=True)
+    etd = models.DateTimeField(null=True, blank=True)
     def __str__(self):
         return self.num
 
