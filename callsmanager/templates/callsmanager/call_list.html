@@ -1,0 +1,9 @@
+{% if call_list %}
+<ul>
+    {% for call in call_list %}
+    <li><a href="{% url 'call_details' call.id %}">{{ call.num }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No calls are available.</p>
+{% endif %}
