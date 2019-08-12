@@ -74,9 +74,12 @@ def call_edit(request, call_id):
     if len(mess) != 0:
         return render(request, 'callsmanager/call_form.html', {'call':call,'error_messages':mess})
 
+    port.callCount += 1
     call.port = port
     call.ship = ship
+    call.num = f"{port.locode}{port.callCount:010d}"
     call.save()
+    port.save()
     return HttpResponseRedirect(reverse('callsmanager:call_details', args=(call.id,)))
 """
 
