@@ -1,13 +1,17 @@
-<h1>Liste des Escales</h1>
+{% extends "callsmanager/base.html" %}
 
-<a href="{% url 'callsmanager:call_edit' 0 %}">Ajouter une nouvelle escale</a> 
+{% block title %} Liste des Escales {% endblock %}
 
-{% if call_list %}
-    <ul>
-        {% for call in call_list %}
-            <li><a href="{% url 'callsmanager:call_details' call.id %}">{{ call.num }}</a> <a href="{% url 'callsmanager:call_edit' call.id %}">Modifier</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No calls are available.</p>
-{% endif %}
+{% block content %}
+    <a href="{% url 'callsmanager:call_edit' 0 %}">Ajouter une nouvelle escale</a> 
+
+    {% if call_list %}
+        <ul>
+            {% for call in call_list %}
+                <li><a href="{% url 'callsmanager:call_details' call.id %}">{{ call.num }}</a> <a href="{% url 'callsmanager:call_edit' call.id %}">Modifier</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No calls are available.</p>
+    {% endif %}
+{% endblock %}

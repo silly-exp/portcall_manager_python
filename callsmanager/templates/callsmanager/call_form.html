@@ -12,21 +12,31 @@
     </strong></p>
 {% endif %}
 
+{% if form.subject.errors %}
+    <ol>
+    {% for error in form.subject.errors %}
+        <li><strong>{{ error|escape }}</strong></li>
+    {% endfor %}
+    </ol>
+{% endif %}
+
 {% if call.id is None %}
-<form action="{% url 'callsmanager:call_create' %}" method="post">
+<form action="{% url 'callsmanager:call_edit' 0 %}" method="post">
 {% else %}
-<form action="{% url 'callsmanager:call_update' call.id %}" method="post">
+<form action="{% url 'callsmanager:call_edit' call.id %}" method="post">
 {% endif %}
 
     {% csrf_token %}
-    <label>Locode du port</label>
-    <input type="text" name="locode" id="port_locode" maxlength="5" minlength="5"><br/>
-    <label>OMI du navire</label>
-    <input type="text" name="imo" id="ship_imo" maxlength="7" minlength="7"><br/>
-    <label>ETA</label>
-    <input type="date" name="eta" id="eta"><br/>
-    <label>ETD</label>
-    <input type="date" name="etd" id="etd"><br/>
+
+{% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    </div>
+{% endfor %}
 
     <input type="submit" value="Valider">
 </form>

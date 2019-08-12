@@ -2,12 +2,15 @@ from django.shortcuts import get_object_or_404, render
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from .models import Call, Port, Ship
 from django.urls import reverse
+
+from .models import Call, Port, Ship
+from .forms import CallForm, HomeForm
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the Calls index.")
+    form = HomeForm()
+    return render(request, 'callsmanager/index.html', {'form':form})
 
 def call_list(request):
     template = loader.get_template('callsmanager/call_list.html')
@@ -30,11 +33,21 @@ def call_edit(request, call_id):
         call = Call()
     else:
         call = get_object_or_404(Call, pk=call_id)
-    return render(request, 'callsmanager/call_form.html', {'call':call})
 
-def call_create(request):
+    if request.method == 'POST':
+        form = CallForm(request.POST)
+        if form.is_valid():
+            
+            call.save()
+            return HttpResponseRedirect(reverse('callsmanager:call_details', args={call.id, }))
+
+    else:
+        form = CallForm()
+    
+    return render(request, 'callsmanager/call_form.html', {'call':call, 'form':form})
+"""    
     mess = []
-    call = Call()
+    
     params = request.POST
     #call_control(request.POST)
     if 'locode' not in params or params['locode'] == '':
@@ -65,7 +78,9 @@ def call_create(request):
     call.ship = ship
     call.save()
     return HttpResponseRedirect(reverse('callsmanager:call_details', args=(call.id,)))
+"""
 
+"""
 def call_update(request, call_id):
     mess = []
     call = get_object_or_404(Call, pk=call_id)
@@ -99,4 +114,4 @@ def call_update(request, call_id):
     call.ship = ship
     call.save()
     return HttpResponseRedirect(reverse('callsmanager:call_details', args=(call.id,)))
-    
+"""

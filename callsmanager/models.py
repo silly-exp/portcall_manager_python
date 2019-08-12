@@ -1,4 +1,5 @@
 from django.db import models
+from . validators import validate_IMO
 
 
 class Port(models.Model):
@@ -7,11 +8,14 @@ class Port(models.Model):
     def __str__(self):
         return self.name
 
+
 class Ship(models.Model):
     name = models.CharField(max_length=200)
-    imo = models.IntegerField()
+    imo = models.IntegerField(validators=[validate_IMO])
     def __str__(self):
         return self.name
+        
+                
 
 class Call(models.Model):
     num = models.CharField(max_length=15)
