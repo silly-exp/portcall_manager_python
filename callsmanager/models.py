@@ -1,11 +1,12 @@
 from django.db import models
-from . validators import validate_IMO
+from .validators import validate_IMO
 
 
 class Port(models.Model):
     name = models.CharField(max_length=200)
     locode = models.CharField(max_length=5)
     callCount = models.IntegerField(name='call_count', default=0)
+    #TODO: timezone
     def __str__(self):
         return self.name
 

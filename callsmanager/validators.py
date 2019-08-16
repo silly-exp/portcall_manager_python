@@ -11,6 +11,9 @@ def validate_IMO(value):
         rest = value // 10
         cond = 0
         for i in range(6):
+            # the imo number must have 7 figures
+            if i == 5 and rest == 0:
+                raise Exception
             n = rest % 10
             cond += n * (7-i)
             rest = rest // 10
@@ -20,4 +23,5 @@ def validate_IMO(value):
         raise ValidationError(
             _('%(value)s is not a valid IMO number'),
             params={'value': value},
+            code='invalid',
         )
