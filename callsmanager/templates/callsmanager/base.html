@@ -7,17 +7,27 @@
 </head>
 
 <body>
-    <div id="sidebar">
-        {% block sidebar %}
-        <ul>
-            <li><a href="/">Changer de port</a></li>
-            <li><a href="/calls">Calls</a></li>
-        </ul>
-        {% endblock %}
+    <div id="container">
+   <div id="header">
+        Tools 4 ports
     </div>
 
-    <div id="content">
-        {% block content %}{% endblock %}
+        <div id="sidebar">
+            {% block sidebar %}
+            {% if request.session.port_id is not None %}
+                id du port: {{ request.session.port_id }}
+                <ul>
+                    <li><a href="/callsmanager">Changer de port</a></li>
+                    <li><a href="/callsmanager/calls">Calls</a></li>
+                </ul>
+            {% endif %}
+            {% endblock %}
+            <a href="http://todo"> CGU </a>
+        </div>
+
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
     </div>
 </body>
 </html>
