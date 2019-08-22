@@ -1,6 +1,13 @@
+{% extends "callsmanager/base.html" %}
 
+{% block title %} Accueil {% endblock %}
+
+{% block content %}
 Choose your port
-<form>
+<form action="{% url 'callsmanager:index' %}" method="post">
+    {% csrf_token %}
+
     {{ form }}
     <input type="submit" value="Valider">
 </form>
+{% endblock %}

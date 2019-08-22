@@ -28,4 +28,4 @@ class CallForm(forms.Form):
 
 
 class HomeForm(forms.Form):
-    pass
+    locode = forms.CharField(label='Locode du port', max_length=5, min_length=5)

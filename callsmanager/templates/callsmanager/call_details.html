@@ -1,0 +1,10 @@
+{% extends "callsmanager/base.html" %}
+
+{% block title %} Détail de l'escales {% endblock %}
+
+{% block content %}
+{{ call.num }}<br/>
+{{ call.port.name }}<br/>
+{{ call.ship.name }}<br/>
+{{ call.eta }}<br/>
+{% endblock %}

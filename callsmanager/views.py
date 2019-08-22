@@ -9,24 +9,33 @@ from .forms import CallForm, HomeForm
 
 
 def index(request):
-    form = HomeForm()
+    # TODO: lister les ports gérés par l'outil
+    # TODO: ajouter au modèle l'indication que le port est géré
+    # TODO: masquer toutes les actions tant qu'aucun port n'a été sélectionné.
+    if request.method == 'POST':
+        form = HomeForm(request.POST)
+        if form.is_valid():
+            port = get_object_or_404(Port, locode=form.cleaned_data['locode'])
+            request.session['port_id'] = port.id 
+            return HttpResponseRedirect(reverse('callsmanager:index'))
+    else:
+        form = HomeForm()
     return render(request, 'callsmanager/index.html', {'form':form})
 
 def call_list(request):
     template = loader.get_template('callsmanager/call_list.html')
+    #FIXME: cette façon de faire la requete n'est certainement pas super.
+    call_list = Call.objects
+    if 'port_id' in request.session.keys():
+        call_list = call_list.filter(port_id=request.session['port_id'])
     context = {
-        'call_list': Call.objects.order_by('eta'),
+        'call_list': call_list.order_by('eta'),
     }
     return HttpResponse(template.render(context, request))
 
 def call_details(request, call_id):
-    call = Call.objects.get(id=call_id)
-    output = f"""Détail de l'escale:<br/>
-                 {call.num}<br/>
-                 {call.port.name}<br/>
-                 {call.ship.name}<br/>
-                 {call.eta}"""
-    return HttpResponse(output)
+    call = get_object_or_404(Call, pk=call_id)
+    return render(request, 'callsmanager/call_details.html', {'call':call})
 
 def call_edit(request, call_id):
     if call_id==0:

@@ -1,3 +1,15 @@
+{% extends "callsmanager/base.html" %}
+
+{% block title %}
+{% if call.id is None %}
+    Creation d'une nouvelle escale 
+{% else %}
+    Edition de l'escale {{call.num}}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
 {% if call.id is None %}
 <h1>Creation d'une nouvelle escale</h1>
 {% else %}
@@ -40,3 +52,4 @@
 
     <input type="submit" value="Valider">
 </form>
+{% endblock %}
