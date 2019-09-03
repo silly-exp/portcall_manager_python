@@ -11,7 +11,7 @@
 {% block content %}
 
 {% if call.id is None %}
-<h1>Creation d'une nouvelle escale</h1>
+<h1>{% trans "Creation d'une nouvelle escale" %}</h1>
 {% else %}
 <h1>Edition de l'escale {{call.num}}</h1>
 {% endif %}
