@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,24 +8,33 @@
 </head>
 
 <body>
-    <div id="container">
-   <div id="header">
-        Tools 4 ports
-    </div>
 
         <div id="sidebar">
             {% block sidebar %}
             {% if request.session.port_id is not None %}
-                id du port: {{ request.session.port_id }}
                 <ul>
                     <li><a href="/callsmanager">Changer de port</a></li>
-                    <li><a href="/callsmanager/calls">Calls</a></li>
+                    <li><a href="/callsmanager/calls">{% trans "Calls" %}</a></li>
                 </ul>
             {% endif %}
             {% endblock %}
             <a href="http://todo"> CGU </a>
         </div>
 
+    <div id="header">
+        <div id="logo">
+        Tools4Ports
+        </div>
+        <div id="port-select">
+        {% if request.session.port_id is not None %}
+            port: {{ request.session.port_id }}
+        {% endif %}
+        </div>
+        <div id="header-tools">
+            FRA account 
+        </div>
+
+    </div>
         <div id="content">
             {% block content %}{% endblock %}
         </div>
