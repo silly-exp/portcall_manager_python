@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-08 06:40+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: callsmanager/forms.py:7
+msgid "port locode"
+msgstr "Locode du port"
+
+#: callsmanager/forms.py:8
+msgid "ship IMO Number"
+msgstr "numéro OMI du navire"
+
+#: callsmanager/forms.py:9
+msgid "ETA day"
+msgstr "jour d'arrivée prévu"
+
+#: callsmanager/forms.py:10
+msgid "ETA time"
+msgstr "heure d'arrivée prévue"
+
+#: callsmanager/forms.py:11
+msgid "ETD day"
+msgstr "jour de départ prévu"
+
+#: callsmanager/forms.py:12
+msgid "ETD time"
+msgstr "heure de départ prévue"
+
+#: callsmanager/templates/callsmanager/base.html:17
+msgid "Calls"
+msgstr "Escales"
+
+#: callsmanager/templates/callsmanager/base.html:21
+msgid "TGU"
+msgstr "CGU"
+
+#: callsmanager/templates/callsmanager/call_form.html:16
+msgid "Create a new port call."
+msgstr "Création d'une nouvelle escale"
+
+#: callsmanager/templates/callsmanager/call_form.html:18
+msgid "Edit port call"
+msgstr "Edition de l'escale"
+
+#: callsmanager/validators.py:24
+#, python-format
+msgid "%(value)s is not a valid IMO number"
+msgstr "%(value)s n'est pas un numéro OMI valide"
+
+#~ msgid "ship IMO number"
+#~ msgstr "numéro OMI du navire"

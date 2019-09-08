@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 20:36+0000\n"
+"POT-Creation-Date: 2019-09-07 06:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,3 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: callsmanager/templates/callsmanager/base.html:17
-msgid "Calls"
-msgstr "Escales"
-
-#: callsmanager/templates/callsmanager/call_form.html:14
-msgid "Creation d'une nouvelle escale"
-msgstr ""
-
-#: callsmanager/validators.py:24
-#, python-format
-msgid "%(value)s is not a valid IMO number"
-msgstr "%(value)s n'est pas un numéro OMI valide"

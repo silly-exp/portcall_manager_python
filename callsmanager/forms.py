@@ -1,14 +1,15 @@
 from django import forms
 from .fields import ImoField
+from django.utils.translation import gettext_lazy as _
 
 
 class CallForm(forms.Form):
-    locode = forms.CharField(label='Locode du port', max_length=5, min_length=5)
-    imo = ImoField(label='OMI du navire')
-    eta_date = forms.DateTimeField(label='ETA day', widget=forms.DateInput(attrs={'type':'date'}))
-    eta_time = forms.TimeField(label='ETA time', widget=forms.TimeInput(attrs={'type':'time'}))
-    etd_date = forms.DateTimeField(label='ETD day', widget=forms.DateInput(attrs={'type':'date'}), required=False)
-    etd_time = forms.TimeField(label='ETD time', widget=forms.TimeInput(attrs={'type':'time'}), required=False)
+    locode = forms.CharField(label=_('port locode'), max_length=5, min_length=5)
+    imo = ImoField(label=_('ship IMO Number'))
+    eta_date = forms.DateTimeField(label=_('ETA day'), widget=forms.DateInput(attrs={'type':'date'}))
+    eta_time = forms.TimeField(label=_('ETA time'), widget=forms.TimeInput(attrs={'type':'time'}))
+    etd_date = forms.DateTimeField(label=_('ETD day'), widget=forms.DateInput(attrs={'type':'date'}), required=False)
+    etd_time = forms.TimeField(label=_('ETD time'), widget=forms.TimeInput(attrs={'type':'time'}), required=False)
 
     """
     https://docs.djangoproject.com/fr/2.1/ref/forms/validation/
