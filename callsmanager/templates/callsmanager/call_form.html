@@ -1,5 +1,7 @@
 {% extends "callsmanager/base.html" %}
 
+{% load i18n %}
+
 {% block title %}
 {% if call.id is None %}
     Creation d'une nouvelle escale 
@@ -11,9 +13,9 @@
 {% block content %}
 
 {% if call.id is None %}
-<h1>{% trans "Creation d'une nouvelle escale" %}</h1>
+<h1>{% trans "Create a new port call." %}</h1>
 {% else %}
-<h1>Edition de l'escale {{call.num}}</h1>
+<h1>{% trans "Edit port call" %} {{call.num}}</h1>
 {% endif %}
 
 {% if error_messages %}
